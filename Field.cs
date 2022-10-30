@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace CourseWork_LeeAlgorithm
 {
+    [Serializable]
     internal class Field
     {
         public int N { get ; set; }

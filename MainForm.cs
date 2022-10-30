@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
-namespace WindowsFormsApp1
+namespace CourseWork_LeeAlgorithm
 {
     public partial class MainForm : Form
     {
@@ -119,7 +119,6 @@ namespace WindowsFormsApp1
                 }
                 field.arrayField[iTile, jTile] = 0;
                 (sender as System.Windows.Forms.Button).BackColor = Color.White;
-                (sender as System.Windows.Forms.Button).Text = jTile.ToString();
             }
         }
 
