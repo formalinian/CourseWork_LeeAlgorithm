@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+using System.Text.Json;
+using System.IO;
 
 namespace CourseWork_LeeAlgorithm
 {
@@ -159,6 +161,16 @@ namespace CourseWork_LeeAlgorithm
             } else
             {
                 MessageBox.Show("Сформируйте поле!");
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (field != null)
+            {
+                SerializedField serializedField = new SerializedField(field);
+                string json = JsonSerializer.Serialize(serializedField);
+                File.WriteAllText("FieldSaveFile.json", json);
             }
         }
     }

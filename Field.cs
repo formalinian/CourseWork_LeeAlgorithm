@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CourseWork_LeeAlgorithm
 {
-    [Serializable]
     internal class Field
     {
         public int N { get ; set; }
