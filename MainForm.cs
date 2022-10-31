@@ -22,6 +22,8 @@ namespace CourseWork_LeeAlgorithm
         public MainForm()
         {
             InitializeComponent();
+            openFileDialog.Filter = "Json files(*.json)|*.json";
+            saveFileDialog.Filter = "Json files(*.json)|*.json";
         }
 
         private void initFieldButton_Click(object sender, EventArgs e)
@@ -30,6 +32,7 @@ namespace CourseWork_LeeAlgorithm
             field = new Field(int.Parse(nComboBox.Text), int.Parse(mComboBox.Text));
             tiles = new System.Windows.Forms.Button[field.N, field.M];
             for (int i = 0; i < field.N; i++)
+            {
                 for (int j = 0; j < field.M; j++)
                 {
                     tiles[i, j] = new System.Windows.Forms.Button();
@@ -39,6 +42,7 @@ namespace CourseWork_LeeAlgorithm
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
                     fieldPanel.Controls.Add(tiles[i, j]);
                 }
+            }
         }
 
         private void Tiles_Click(object sender, EventArgs e)
@@ -164,14 +168,25 @@ namespace CourseWork_LeeAlgorithm
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             if (field != null)
             {
+                if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                    return;
                 SerializedField serializedField = new SerializedField(field);
                 string json = JsonSerializer.Serialize(serializedField);
-                File.WriteAllText("FieldSaveFile.json", json);
+                File.WriteAllText(saveFileDialog.FileName, json);
+            } else
+            {
+                MessageBox.Show("Сформируйте поле!");
             }
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
         }
     }
 }

@@ -76,7 +76,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawField.cs" />
     <Compile Include="Field.cs" />
+    <Compile Include="FieldDraw.cs" />
     <Compile Include="SerializedField.cs" />
     <Compile Include="WaweTracing.cs" />
     <Compile Include="MainForm.cs">

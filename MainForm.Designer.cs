@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.fieldPanel = new System.Windows.Forms.Panel();
             this.initFieldButton = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mComboBox = new System.Windows.Forms.ComboBox();
             this.nComboBox = new System.Windows.Forms.ComboBox();
             this.startRadioButton = new System.Windows.Forms.RadioButton();
@@ -44,8 +42,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1.SuspendLayout();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -57,7 +57,7 @@
             this.fieldPanel.AutoScroll = true;
             this.fieldPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.fieldPanel.Location = new System.Drawing.Point(243, 15);
-            this.fieldPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fieldPanel.Margin = new System.Windows.Forms.Padding(4);
             this.fieldPanel.Name = "fieldPanel";
             this.fieldPanel.Size = new System.Drawing.Size(933, 862);
             this.fieldPanel.TabIndex = 0;
@@ -65,21 +65,13 @@
             // initFieldButton
             // 
             this.initFieldButton.Location = new System.Drawing.Point(16, 112);
-            this.initFieldButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.initFieldButton.Margin = new System.Windows.Forms.Padding(4);
             this.initFieldButton.Name = "initFieldButton";
             this.initFieldButton.Size = new System.Drawing.Size(219, 28);
             this.initFieldButton.TabIndex = 3;
             this.initFieldButton.Text = "Cформировать поле";
             this.initFieldButton.UseVisualStyleBackColor = true;
             this.initFieldButton.Click += new System.EventHandler(this.initFieldButton_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 28);
             // 
             // mComboBox
             // 
@@ -112,7 +104,7 @@
             "25",
             "50"});
             this.mComboBox.Location = new System.Drawing.Point(73, 79);
-            this.mComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.mComboBox.Name = "mComboBox";
             this.mComboBox.Size = new System.Drawing.Size(160, 24);
             this.mComboBox.TabIndex = 4;
@@ -148,7 +140,7 @@
             "25",
             "50"});
             this.nComboBox.Location = new System.Drawing.Point(73, 46);
-            this.nComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.nComboBox.Name = "nComboBox";
             this.nComboBox.Size = new System.Drawing.Size(160, 24);
             this.nComboBox.TabIndex = 5;
@@ -158,7 +150,7 @@
             this.startRadioButton.AutoSize = true;
             this.startRadioButton.BackColor = System.Drawing.SystemColors.Control;
             this.startRadioButton.Location = new System.Drawing.Point(47, 148);
-            this.startRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.startRadioButton.Name = "startRadioButton";
             this.startRadioButton.Size = new System.Drawing.Size(67, 20);
             this.startRadioButton.TabIndex = 6;
@@ -171,7 +163,7 @@
             this.finishRadioButton.AutoSize = true;
             this.finishRadioButton.BackColor = System.Drawing.SystemColors.Control;
             this.finishRadioButton.Location = new System.Drawing.Point(47, 176);
-            this.finishRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.finishRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.finishRadioButton.Name = "finishRadioButton";
             this.finishRadioButton.Size = new System.Drawing.Size(72, 20);
             this.finishRadioButton.TabIndex = 7;
@@ -184,7 +176,7 @@
             this.wallRadioButton.AutoSize = true;
             this.wallRadioButton.BackColor = System.Drawing.SystemColors.Control;
             this.wallRadioButton.Location = new System.Drawing.Point(47, 204);
-            this.wallRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wallRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.wallRadioButton.Name = "wallRadioButton";
             this.wallRadioButton.Size = new System.Drawing.Size(68, 20);
             this.wallRadioButton.TabIndex = 8;
@@ -196,7 +188,7 @@
             // 
             this.clearRadioButton.AutoSize = true;
             this.clearRadioButton.Location = new System.Drawing.Point(47, 233);
-            this.clearRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clearRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.clearRadioButton.Name = "clearRadioButton";
             this.clearRadioButton.Size = new System.Drawing.Size(74, 20);
             this.clearRadioButton.TabIndex = 9;
@@ -207,7 +199,7 @@
             // startWaweButton
             // 
             this.startWaweButton.Location = new System.Drawing.Point(16, 261);
-            this.startWaweButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startWaweButton.Margin = new System.Windows.Forms.Padding(4);
             this.startWaweButton.Name = "startWaweButton";
             this.startWaweButton.Size = new System.Drawing.Size(219, 28);
             this.startWaweButton.TabIndex = 10;
@@ -220,7 +212,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Violet;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(16, 148);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(23, 21);
             this.pictureBox1.TabIndex = 11;
@@ -230,7 +222,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.BlueViolet;
             this.pictureBox2.Location = new System.Drawing.Point(16, 176);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(23, 21);
             this.pictureBox2.TabIndex = 12;
@@ -240,7 +232,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Gray;
             this.pictureBox3.Location = new System.Drawing.Point(16, 204);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(23, 21);
             this.pictureBox3.TabIndex = 13;
@@ -250,26 +242,44 @@
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(16, 233);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(23, 21);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 14;
             this.pictureBox4.TabStop = false;
             // 
-            // saveToolStripMenuItem
+            // saveButton
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.saveToolStripMenuItem.Text = "Сохранить";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveButton.Location = new System.Drawing.Point(16, 804);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(219, 28);
+            this.saveButton.TabIndex = 15;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(17, 838);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(219, 28);
+            this.loadButton.TabIndex = 16;
+            this.loadButton.Text = "Загрузить";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 891);
-            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.loadButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -283,11 +293,10 @@
             this.Controls.Add(this.mComboBox);
             this.Controls.Add(this.initFieldButton);
             this.Controls.Add(this.fieldPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Волновой алгоритм трассировки";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -301,7 +310,6 @@
 
         private System.Windows.Forms.Panel fieldPanel;
         private System.Windows.Forms.Button initFieldButton;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ComboBox mComboBox;
         private System.Windows.Forms.ComboBox nComboBox;
         private System.Windows.Forms.RadioButton startRadioButton;
@@ -313,7 +321,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
