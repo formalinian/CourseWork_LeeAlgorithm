@@ -63,67 +63,67 @@ namespace CourseWork_LeeAlgorithm
                 
             if (startRadioButton.Checked)
             {
-                if (field.startN != -2 && field.startM != -2)
+                if (field.StartN != -2 && field.StartM != -2)
                 {
-                    tiles[field.startN, field.startM].BackColor = Color.White;
-                    field.arrayField[field.startN, field.startM] = 0;
+                    tiles[field.StartN, field.StartM].BackColor = Color.White;
+                    field.ArrayField[field.StartN, field.StartM] = 0;
                 }
-                if (field.finishN == iTile && field.finishM == jTile)
+                if (field.FinishN == iTile && field.FinishM == jTile)
                 {
-                    field.finishN = -2;
-                    field.finishM = -2;
+                    field.FinishN = -2;
+                    field.FinishM = -2;
                 }
-                field.startN = iTile;
-                field.startM = jTile;
+                field.StartN = iTile;
+                field.StartM = jTile;
                 (sender as System.Windows.Forms.Button).BackColor = Color.Violet;
-                field.arrayField[field.startN, field.startM] = 1;
+                field.ArrayField[field.StartN, field.StartM] = 1;
 
             }
             if (finishRadioButton.Checked)
             {
-                if (field.finishN != -2 && field.finishM != -2)
+                if (field.FinishN != -2 && field.FinishM != -2)
                 {
-                    tiles[field.finishN, field.finishM].BackColor = Color.White;
-                    field.arrayField[field.finishN, field.finishM] = 0;
+                    tiles[field.FinishN, field.FinishM].BackColor = Color.White;
+                    field.ArrayField[field.FinishN, field.FinishM] = 0;
                 }
-                if (field.startN == iTile && field.startM == jTile)
+                if (field.StartN == iTile && field.StartM == jTile)
                 {
-                    field.startN = -2;
-                    field.startM = -2;
+                    field.StartN = -2;
+                    field.StartM = -2;
                 }
-                field.finishN = iTile;
-                field.finishM = jTile;
+                field.FinishN = iTile;
+                field.FinishM = jTile;
                 (sender as System.Windows.Forms.Button).BackColor = Color.BlueViolet;
-                field.arrayField[field.finishN, field.finishM] = 0;
+                field.ArrayField[field.FinishN, field.FinishM] = 0;
             }
             if (wallRadioButton.Checked)
             {
-                if (field.startN == iTile && field.startM == jTile)
+                if (field.StartN == iTile && field.StartM == jTile)
                 {
-                    field.startN = -2;
-                    field.startM = -2;
+                    field.StartN = -2;
+                    field.StartM = -2;
                 }
-                if (field.finishN == iTile && field.finishM == jTile)
+                if (field.FinishN == iTile && field.FinishM == jTile)
                 {
-                    field.finishN = -2;
-                    field.finishM = -2;
+                    field.FinishN = -2;
+                    field.FinishM = -2;
                 }
-                field.arrayField[iTile, jTile] = -1;
+                field.ArrayField[iTile, jTile] = -1;
                 (sender as System.Windows.Forms.Button).BackColor = Color.Gray;
             }
             if (clearRadioButton.Checked)
             {
-                if (field.startN == iTile && field.startM == jTile)
+                if (field.StartN == iTile && field.StartM == jTile)
                 {
-                    field.startN = -2;
-                    field.startM = -2;
+                    field.StartN = -2;
+                    field.StartM = -2;
                 }
-                if (field.finishN == iTile && field.finishM == jTile)
+                if (field.FinishN == iTile && field.FinishM == jTile)
                 {
-                    field.finishN = -2;
-                    field.finishM = -2;
+                    field.FinishN = -2;
+                    field.FinishM = -2;
                 }
-                field.arrayField[iTile, jTile] = 0;
+                field.ArrayField[iTile, jTile] = 0;
                 (sender as System.Windows.Forms.Button).BackColor = Color.White;
             }
         }
@@ -143,24 +143,24 @@ namespace CourseWork_LeeAlgorithm
                     for (int j = 0; j < tiles.GetLength(1); j++)
                     {
                         tiles[i, j].Text = " ";
-                        if (field.arrayField[i, j] > 1)
+                        if (field.ArrayField[i, j] > 1)
                         {
-                            field.arrayField[i, j] = 0;
-                            if (!(i == field.finishN && j == field.finishM))
+                            field.ArrayField[i, j] = 0;
+                            if (!(i == field.FinishN && j == field.FinishM))
                             {
                                 tiles[i, j].BackColor = Color.White;
                             }
                         }
                     }
                 }
-                if (field.finishN == -2 || field.startN == -2)
+                if (field.FinishN == -2 || field.StartN == -2)
                 {
                     MessageBox.Show("Выставите начало и конец пути!");
                 }
                 else
                 {
-                    WaweTracing.StartWawe(field, tiles);
-                    WaweTracing.LeadWay(field, tiles, field.finishN, field.finishM);
+                    WaweTracing.StartWawe(field);
+                    WaweTracing.LeadWay(field, field.FinishN, field.FinishM);
                 }
             } else
             {

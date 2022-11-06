@@ -8,6 +8,9 @@ namespace CourseWork_LeeAlgorithm
 {
     internal class DrawField
     {
+        public static void setMapRanges(Field traceField, System.Windows.Forms.Button[,] traceTiles)
+        {
 
+        }
     }
 }

@@ -8,26 +8,28 @@ namespace CourseWork_LeeAlgorithm
 {
     internal class Field
     {
-        public int N { get ; set; }
+        public int N { get; set; }
         public int M { get; set; }
 
-        public int startN { get; set; }
-        public int startM { get; set; }
+        public int StartN { get; set; }
+        public int StartM { get; set; }
 
-        public int finishN { get; set; }
-        public int finishM { get; set; }
+        public int FinishN { get; set; }
+        public int FinishM { get; set; }
 
-        public int[,] arrayField { get; set; }
+        public int[,] ArrayField { get; set; }
+
+        public List<int[]> Way = new List<int[]>();
 
         public Field(int n, int m)
         {
             this.N = n;
             this.M = m; 
-            this.arrayField = new int[n,m];
-            this.startN = -2;
-            this.startM = -2;
-            this.finishM = -2;
-            this.finishN = -2;
+            this.ArrayField = new int[n,m];
+            this.StartN = -2;
+            this.StartM = -2;
+            this.FinishM = -2;
+            this.FinishN = -2;
         }
     }
 }

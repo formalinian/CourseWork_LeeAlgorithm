@@ -11,32 +11,43 @@ namespace CourseWork_LeeAlgorithm
         public int N { get; set; }
         public int M { get; set; }
 
-        public int startN { get; set; }
-        public int startM { get; set; }
+        public int StartN { get; set; }
+        public int StartM { get; set; }
 
-        public int finishN { get; set; }
-        public int finishM { get; set; }
+        public int FinishN { get; set; }
+        public int FinishM { get; set; }
 
-        public int[] arrayField { get; set; }
+        public int[] ArrayField { get; set; }
+        public int[] Way { get; set; }
 
-        public SerializedField(Field field)
+    public SerializedField(Field field)
         {
             this.N = field.N;
             this.M = field.M;
-            this.arrayField = new int[this.N * this.M];
+            this.ArrayField = new int[this.N * this.M];
             int temp = 0;
             for (int i = 0; i < this.N; i++)
             {
                 for (int j = 0; j < this.M; j++)
                 {
-                    this.arrayField[temp] = field.arrayField[i, j];
+                    this.ArrayField[temp] = field.ArrayField[i, j];
                     temp++;
                 }
             }
-            this.startN = field.startN;
-            this.startM = field.startM;
-            this.finishM = field.finishM;
-            this.finishN = field.finishN;
+            temp = 0;
+            this.StartN = field.StartN;
+            this.StartM = field.StartM;
+            this.FinishM = field.FinishM;
+            this.FinishN = field.FinishN;
+            this.Way = new int[field.Way.Count * 2];
+            for (int i = 0; i < field.Way.Count; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    this.Way[temp] = field.Way[i][j];
+                    temp++;
+                }
+            }
         }
     }
 }
