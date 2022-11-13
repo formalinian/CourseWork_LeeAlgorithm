@@ -32,37 +32,21 @@ namespace CourseWork_LeeAlgorithm
                                 {
                                     traceField.ArrayField[i - 1, j] = d + 1;
                                     nextState++;
-                                    //if (!((i - 1) == traceField.finishN && j == traceField.finishM))
-                                    //{
-                                    //    traceTiles[i - 1, j].Text = (traceField.arrayField[i - 1, j] - 1).ToString();
-                                    //}
                                 }
                                 if (j != 0 && traceField.ArrayField[i, j - 1] == 0)
                                 {
                                     traceField.ArrayField[i, j - 1] = d + 1;
                                     nextState++;
-                                    //if (!(i == traceField.finishN && (j - 1) == traceField.finishM))
-                                    //{
-                                    //    traceTiles[i, j - 1].Text = (traceField.arrayField[i, j - 1] - 1).ToString();
-                                    //}
                                 }
                                 if (i != traceField.N - 1 && traceField.ArrayField[i + 1, j] == 0)
                                 {
                                     traceField.ArrayField[i + 1, j] = d + 1;
                                     nextState++;
-                                    //if (!((i + 1) == traceField.finishN && j == traceField.finishM))
-                                    //{
-                                    //    traceTiles[i + 1, j].Text = (traceField.arrayField[i + 1, j] - 1).ToString();
-                                    //}
                                 }
                                 if (j != traceField.M - 1 && traceField.ArrayField[i, j + 1] == 0)
                                 {
                                     traceField.ArrayField[i, j + 1] = d + 1;
                                     nextState++;
-                                    //if (!(i == traceField.finishN && (j + 1) == traceField.finishM))
-                                    //{
-                                    //    traceTiles[i, j + 1].Text = (traceField.arrayField[i, j + 1] - 1).ToString();
-                                    //}
                                 }
                             }
                         }

@@ -138,21 +138,7 @@ namespace CourseWork_LeeAlgorithm
         {
             if (field != null)
             {
-                for (int i = 0; i < tiles.GetLength(0); i++)
-                {
-                    for (int j = 0; j < tiles.GetLength(1); j++)
-                    {
-                        tiles[i, j].Text = " ";
-                        if (field.ArrayField[i, j] > 1)
-                        {
-                            field.ArrayField[i, j] = 0;
-                            if (!(i == field.FinishN && j == field.FinishM))
-                            {
-                                tiles[i, j].BackColor = Color.White;
-                            }
-                        }
-                    }
-                }
+                DrawField.ClearTiles(tiles, field);
                 if (field.FinishN == -2 || field.StartN == -2)
                 {
                     MessageBox.Show("Выставите начало и конец пути!");
@@ -160,7 +146,7 @@ namespace CourseWork_LeeAlgorithm
                 else
                 {
                     WaweTracing.StartWawe(field);
-                    WaweTracing.LeadWay(field, field.FinishN, field.FinishM);
+                    DrawField.SetMapRanges(field, tiles);
                 }
             } else
             {

@@ -15,9 +15,11 @@ namespace CourseWork_LeeAlgorithm
             {
                 for (int j = 0; j < traceField.M; j++)
                 {
-                    if (traceField.ArrayField[i, j] > 0)
+                    if (traceField.ArrayField[i, j] > 0 
+                        && !(traceField.FinishN == i && traceField.FinishM == j) 
+                        && !(traceField.StartN == i && traceField.StartM == j))
                     {
-                        traceTiles[i, j].Text = traceField.ArrayField[i, j].ToString();
+                        traceTiles[i, j].Text = (traceField.ArrayField[i, j] - 1).ToString();
                     }
                 }
             }
