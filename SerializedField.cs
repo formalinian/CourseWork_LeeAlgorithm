@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CourseWork_LeeAlgorithm
@@ -20,7 +21,20 @@ namespace CourseWork_LeeAlgorithm
         public int[] ArrayField { get; set; }
         public int[] Way { get; set; }
 
-    public SerializedField(Field field)
+        [JsonConstructor]
+        public SerializedField(int N, int M, int StartN, int StartM, int FinishN, int FinishM, int[] ArrayField, int[] Way)
+        {
+            this.N = N;
+            this.M = M;
+            this.StartN = StartN;
+            this.StartM = StartM;
+            this.FinishN = FinishN;
+            this.FinishM = FinishM;
+            this.ArrayField = ArrayField;
+            this.Way = Way;
+        }
+
+        public SerializedField(Field field)
         {
             this.N = field.N;
             this.M = field.M;
@@ -49,5 +63,6 @@ namespace CourseWork_LeeAlgorithm
                 }
             }
         }
+
     }
 }

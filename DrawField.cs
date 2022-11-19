@@ -27,6 +27,7 @@ namespace CourseWork_LeeAlgorithm
 
         public static void ClearTiles(System.Windows.Forms.Button[,] tiles, Field field)
         {
+            field.Way.Clear();
             for (int i = 0; i < tiles.GetLength(0); i++)
             {
                 for (int j = 0; j < tiles.GetLength(1); j++)
@@ -42,6 +43,13 @@ namespace CourseWork_LeeAlgorithm
                     }
                 }
             }
+        }
+
+        public static void LoadStartFinish(System.Windows.Forms.Button[,] tiles, Field field)
+        {
+            tiles[field.StartN, field.StartM].BackColor = Color.Violet;
+            tiles[field.FinishN, field.FinishM].BackColor = Color.BlueViolet;
+
         }
 
         public static void DrawWay(System.Windows.Forms.Button[,] tiles, Field field)

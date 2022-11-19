@@ -26,7 +26,7 @@ namespace CourseWork_LeeAlgorithm
             saveFileDialog.Filter = "Json files(*.json)|*.json";
         }
 
-        private void initFieldButton_Click(object sender, EventArgs e)
+        public void initFieldButton_Click(object sender, EventArgs e)
         {
             fieldPanel.Controls.Clear();
             field = new Field(int.Parse(nComboBox.Text), int.Parse(mComboBox.Text));
@@ -36,8 +36,9 @@ namespace CourseWork_LeeAlgorithm
                 for (int j = 0; j < field.M; j++)
                 {
                     tiles[i, j] = new System.Windows.Forms.Button();
-                    tiles[i, j].Location = new Point(j * 32, i * 32);
-                    tiles[i, j].Size = new Size(32, 32);
+                    tiles[i, j].Location = new Point(j * 30, i * 30);
+                    tiles[i, j].Size = new Size(30, 30);
+                    tiles[i, j].Font = new Font("Microsoft Sans Serif", 8);
                     tiles[i, j].BackColor = Color.White;
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
                     fieldPanel.Controls.Add(tiles[i, j]);
@@ -178,6 +179,31 @@ namespace CourseWork_LeeAlgorithm
         {
             if (openFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
+            string json = File.ReadAllText(openFileDialog.FileName);
+            SerializedField serializedField = JsonSerializer.Deserialize<SerializedField>(json);
+            field = new Field(serializedField);
+            fieldPanel.Controls.Clear();
+            tiles = new System.Windows.Forms.Button[field.N, field.M];
+            for (int i = 0; i < field.N; i++)
+            {
+                for (int j = 0; j < field.M; j++)
+                {
+                    tiles[i, j] = new System.Windows.Forms.Button();
+                    tiles[i, j].Location = new Point(j * 30, i * 30);
+                    tiles[i, j].Size = new Size(30, 30);
+                    tiles[i, j].Font = new Font("Microsoft Sans Serif", 6);
+                    tiles[i, j].BackColor = Color.White;
+                    tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
+                    if (field.ArrayField[i, j] == -1)
+                    {
+                        tiles[i, j].BackColor = Color.Gray;
+                    }
+                    fieldPanel.Controls.Add(tiles[i, j]);
+                }
+            }
+            DrawField.SetMapRanges(field, tiles);
+            DrawField.LoadStartFinish(tiles, field);
+            DrawField.DrawWay(tiles, field);
         }
     }
 }

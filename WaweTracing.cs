@@ -16,12 +16,12 @@ namespace CourseWork_LeeAlgorithm
 
             if (traceField.StartM != -2 && traceField.FinishM != -2)
             {
-                int d = 1;
-                int previousState = 0;
-                int nextState = 1;
-                while (traceField.ArrayField[traceField.FinishN, traceField.FinishM] == 0 && (nextState - previousState) > 0)
+                int d = traceField.ArrayField[traceField.StartN, traceField.StartM];
+                int marksPreviousState = 0;
+                int marksCurrentState = 1;
+                while (traceField.ArrayField[traceField.FinishN, traceField.FinishM] == 0 && (marksCurrentState - marksPreviousState) > 0)
                 {
-                    previousState = nextState;
+                    marksPreviousState = marksCurrentState;
                     for (int i = 0; i < traceField.N; i++)
                     {
                         for (int j = 0; j < traceField.M; j++)
@@ -31,22 +31,22 @@ namespace CourseWork_LeeAlgorithm
                                 if (i != 0 && traceField.ArrayField[i - 1, j] == 0)
                                 {
                                     traceField.ArrayField[i - 1, j] = d + 1;
-                                    nextState++;
+                                    marksCurrentState++;
                                 }
                                 if (j != 0 && traceField.ArrayField[i, j - 1] == 0)
                                 {
                                     traceField.ArrayField[i, j - 1] = d + 1;
-                                    nextState++;
+                                    marksCurrentState++;
                                 }
                                 if (i != traceField.N - 1 && traceField.ArrayField[i + 1, j] == 0)
                                 {
                                     traceField.ArrayField[i + 1, j] = d + 1;
-                                    nextState++;
+                                    marksCurrentState++;
                                 }
                                 if (j != traceField.M - 1 && traceField.ArrayField[i, j + 1] == 0)
                                 {
                                     traceField.ArrayField[i, j + 1] = d + 1;
-                                    nextState++;
+                                    marksCurrentState++;
                                 }
                             }
                         }
@@ -64,7 +64,6 @@ namespace CourseWork_LeeAlgorithm
             {
                 if ((nCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate - 1, mCoordinate]) == 1)
                 {
-                    //traceTiles[nCoordinate - 1, mCoordinate].BackColor = Color.PaleVioletRed;
                     var coordinates = new int[2] { nCoordinate - 1, mCoordinate };
                     traceField.Way.Insert(0, coordinates);
                     LeadWay(traceField, nCoordinate - 1, mCoordinate);
@@ -72,7 +71,6 @@ namespace CourseWork_LeeAlgorithm
                 }
                 if ((mCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate, mCoordinate - 1]) == 1)
                 {
-                    //traceTiles[nCoordinate, mCoordinate - 1].BackColor = Color.PaleVioletRed;
                     var coordinates = new int[2] { nCoordinate, mCoordinate - 1 };
                     traceField.Way.Insert(0, coordinates);
                     LeadWay(traceField, nCoordinate, mCoordinate - 1);
@@ -80,7 +78,6 @@ namespace CourseWork_LeeAlgorithm
                 }
                 if ((traceField.N - nCoordinate > 1) && (d - traceField.ArrayField[nCoordinate + 1, mCoordinate]) == 1)
                 {
-                    //traceTiles[nCoordinate + 1, mCoordinate].BackColor = Color.PaleVioletRed;
                     var coordinates = new int[2] { nCoordinate + 1, mCoordinate };
                     traceField.Way.Insert(0, coordinates);
                     LeadWay(traceField, nCoordinate + 1, mCoordinate);
@@ -88,7 +85,6 @@ namespace CourseWork_LeeAlgorithm
                 }
                 if ((traceField.M - mCoordinate > 1) && (d - traceField.ArrayField[nCoordinate, mCoordinate + 1]) == 1)
                 {
-                    //traceTiles[nCoordinate, mCoordinate + 1].BackColor = Color.PaleVioletRed;
                     var coordinates = new int[2] { nCoordinate, mCoordinate + 1 };
                     traceField.Way.Insert(0, coordinates);
                     LeadWay(traceField, nCoordinate, mCoordinate + 1);
