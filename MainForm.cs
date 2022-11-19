@@ -36,8 +36,8 @@ namespace CourseWork_LeeAlgorithm
                 for (int j = 0; j < field.M; j++)
                 {
                     tiles[i, j] = new System.Windows.Forms.Button();
-                    tiles[i, j].Location = new Point(j * 28, i * 28);
-                    tiles[i, j].Size = new Size(28, 28);
+                    tiles[i, j].Location = new Point(j * 32, i * 32);
+                    tiles[i, j].Size = new Size(32, 32);
                     tiles[i, j].BackColor = Color.White;
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
                     fieldPanel.Controls.Add(tiles[i, j]);
@@ -60,7 +60,9 @@ namespace CourseWork_LeeAlgorithm
                     }
                 }
             }
-                
+
+            DrawField.ClearTiles(tiles, field);
+
             if (startRadioButton.Checked)
             {
                 if (field.StartN != -2 && field.StartM != -2)
@@ -134,7 +136,7 @@ namespace CourseWork_LeeAlgorithm
             mComboBox.SelectedIndex = 0;
         }
 
-        private void startWaweButton_Click(object sender, EventArgs e)
+        private void findWayButton_Click(object sender, EventArgs e)
         {
             if (field != null)
             {
@@ -147,6 +149,9 @@ namespace CourseWork_LeeAlgorithm
                 {
                     WaweTracing.StartWawe(field);
                     DrawField.SetMapRanges(field, tiles);
+                    field.Way.Clear();
+                    WaweTracing.LeadWay(field, field.FinishN, field.FinishM);
+                    DrawField.DrawWay(tiles, field);
                 }
             } else
             {

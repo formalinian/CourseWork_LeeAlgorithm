@@ -60,7 +60,7 @@ namespace CourseWork_LeeAlgorithm
         public static void LeadWay(Field traceField, int nCoordinate, int mCoordinate)
         {
             int d = traceField.ArrayField[nCoordinate, mCoordinate];
-            if (d != 2)
+            if (d > 2)
             {
                 if ((nCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate - 1, mCoordinate]) == 1)
                 {

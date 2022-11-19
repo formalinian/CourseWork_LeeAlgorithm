@@ -44,6 +44,13 @@ namespace CourseWork_LeeAlgorithm
             }
         }
 
-
+        public static void DrawWay(System.Windows.Forms.Button[,] tiles, Field field)
+        {
+            foreach (int[] coordinate in field.Way)
+            {
+                tiles[coordinate[0], coordinate[1]].BackColor = Color.PaleVioletRed;
+            }
+        }
+        
     }
 }
