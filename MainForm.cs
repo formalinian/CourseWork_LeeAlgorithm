@@ -36,8 +36,8 @@ namespace CourseWork_LeeAlgorithm
                 for (int j = 0; j < field.M; j++)
                 {
                     tiles[i, j] = new System.Windows.Forms.Button();
-                    tiles[i, j].Location = new Point(j * 30, i * 30);
-                    tiles[i, j].Size = new Size(30, 30);
+                    tiles[i, j].Location = new Point(j * 33, i * 33);
+                    tiles[i, j].Size = new Size(33, 33);
                     tiles[i, j].Font = new Font("Microsoft Sans Serif", 8);
                     tiles[i, j].BackColor = Color.White;
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
@@ -189,8 +189,8 @@ namespace CourseWork_LeeAlgorithm
                 for (int j = 0; j < field.M; j++)
                 {
                     tiles[i, j] = new System.Windows.Forms.Button();
-                    tiles[i, j].Location = new Point(j * 30, i * 30);
-                    tiles[i, j].Size = new Size(30, 30);
+                    tiles[i, j].Location = new Point(j * 33, i * 33);
+                    tiles[i, j].Size = new Size(33, 33);
                     tiles[i, j].Font = new Font("Microsoft Sans Serif", 6);
                     tiles[i, j].BackColor = Color.White;
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
