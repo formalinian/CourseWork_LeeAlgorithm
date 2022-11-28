@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 
 namespace CourseWork_LeeAlgorithm
@@ -92,5 +93,52 @@ namespace CourseWork_LeeAlgorithm
                 }
             } else { return; }
         }
+
+        public static void LeadWay2(Field traceField)
+        {
+            if (traceField.ArrayField[traceField.FinishN, traceField.FinishM] != 0)
+            {
+                int nCoordinate = traceField.FinishN;
+                int mCoordinate = traceField.FinishM;
+                int d = traceField.ArrayField[nCoordinate, mCoordinate];
+                while (d > 2)
+                {
+                    if ((nCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate - 1, mCoordinate]) == 1)
+                    {
+                        var coordinates = new int[2] { nCoordinate - 1, mCoordinate };
+                        traceField.Way.Insert(0, coordinates);
+                        nCoordinate = nCoordinate - 1;
+                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        continue;
+                    }
+                    if ((traceField.M - mCoordinate > 1) && (d - traceField.ArrayField[nCoordinate, mCoordinate + 1]) == 1)
+                    {
+                        var coordinates = new int[2] { nCoordinate, mCoordinate + 1 };
+                        traceField.Way.Insert(0, coordinates);
+                        mCoordinate = mCoordinate + 1;
+                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        continue;
+                    }
+                    if ((traceField.N - nCoordinate > 1) && (d - traceField.ArrayField[nCoordinate + 1, mCoordinate]) == 1)
+                    {
+                        var coordinates = new int[2] { nCoordinate + 1, mCoordinate };
+                        traceField.Way.Insert(0, coordinates);
+                        nCoordinate = nCoordinate + 1;
+                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        continue;
+                    }
+                    if ((mCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate, mCoordinate - 1]) == 1)
+                    {
+                        var coordinates = new int[2] { nCoordinate, mCoordinate - 1 };
+                        traceField.Way.Insert(0, coordinates);
+                        mCoordinate = mCoordinate - 1;
+                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        continue;
+                    }
+                }
+            }
+            else { MessageBox.Show("Восстановить трассу невозможно!"); }
+        }
+
     }
 }

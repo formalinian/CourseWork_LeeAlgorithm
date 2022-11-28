@@ -38,7 +38,7 @@ namespace CourseWork_LeeAlgorithm
                     tiles[i, j] = new System.Windows.Forms.Button();
                     tiles[i, j].Location = new Point(j * 33, i * 33);
                     tiles[i, j].Size = new Size(33, 33);
-                    tiles[i, j].Font = new Font("Microsoft Sans Serif", 8);
+                    tiles[i, j].Font = new Font("Microsoft Sans Serif", 7);
                     tiles[i, j].BackColor = Color.White;
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
                     fieldPanel.Controls.Add(tiles[i, j]);
@@ -151,7 +151,7 @@ namespace CourseWork_LeeAlgorithm
                     WaweTracing.StartWawe(field);
                     DrawField.SetMapRanges(field, tiles);
                     field.Way.Clear();
-                    WaweTracing.LeadWay(field, field.FinishN, field.FinishM);
+                    WaweTracing.LeadWay2(field);
                     DrawField.DrawWay(tiles, field);
                 }
             } else
@@ -191,7 +191,7 @@ namespace CourseWork_LeeAlgorithm
                     tiles[i, j] = new System.Windows.Forms.Button();
                     tiles[i, j].Location = new Point(j * 33, i * 33);
                     tiles[i, j].Size = new Size(33, 33);
-                    tiles[i, j].Font = new Font("Microsoft Sans Serif", 6);
+                    tiles[i, j].Font = new Font("Microsoft Sans Serif", 7);
                     tiles[i, j].BackColor = Color.White;
                     tiles[i, j].MouseClick += new MouseEventHandler(Tiles_Click);
                     if (field.ArrayField[i, j] == -1)

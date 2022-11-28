@@ -205,7 +205,7 @@
             this.findWayButton.Name = "findWayButton";
             this.findWayButton.Size = new System.Drawing.Size(242, 24);
             this.findWayButton.TabIndex = 10;
-            this.findWayButton.Text = "Найти путь";
+            this.findWayButton.Text = "Построить трассу";
             this.findWayButton.UseVisualStyleBackColor = true;
             this.findWayButton.Click += new System.EventHandler(this.findWayButton_Click);
             // 
@@ -250,7 +250,7 @@
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(613, 36);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(242, 24);
             this.saveButton.TabIndex = 15;
@@ -261,7 +261,7 @@
             // loadButton
             // 
             this.loadButton.Location = new System.Drawing.Point(613, 64);
-            this.loadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loadButton.Margin = new System.Windows.Forms.Padding(2);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(242, 24);
             this.loadButton.TabIndex = 16;
@@ -283,7 +283,7 @@
             this.panel1.Controls.Add(this.mComboBox);
             this.panel1.Controls.Add(this.initFieldButton);
             this.panel1.Location = new System.Drawing.Point(30, 7);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(289, 81);
             this.panel1.TabIndex = 17;
@@ -315,9 +315,9 @@
             this.label1.Location = new System.Drawing.Point(2, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 13);
+            this.label1.Size = new System.Drawing.Size(281, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Настройки поля N x M:";
+            this.label1.Text = "Настройки дискретного рабочего поля N x M:";
             // 
             // panel2
             // 
@@ -332,9 +332,9 @@
             this.panel2.Controls.Add(this.wallRadioButton);
             this.panel2.Controls.Add(this.clearRadioButton);
             this.panel2.Location = new System.Drawing.Point(334, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(274, 81);
+            this.panel2.Size = new System.Drawing.Size(265, 81);
             this.panel2.TabIndex = 18;
             // 
             // label4
@@ -359,6 +359,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.findWayButton);
             this.Controls.Add(this.fieldPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(900, 800);
             this.MinimumSize = new System.Drawing.Size(900, 800);
             this.Name = "MainForm";
