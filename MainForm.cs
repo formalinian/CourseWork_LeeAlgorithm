@@ -151,7 +151,7 @@ namespace CourseWork_LeeAlgorithm
                     WaweTracing.StartWawe(field);
                     DrawField.SetMapRanges(field, tiles);
                     field.Way.Clear();
-                    WaweTracing.LeadWay2(field);
+                    WaweTracing.LeadWay(field);
                     DrawField.DrawWay(tiles, field);
                 }
             } else

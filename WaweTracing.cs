@@ -11,128 +11,88 @@ namespace CourseWork_LeeAlgorithm
 {
     internal class WaweTracing
     {
-        
+
         public static void StartWawe(Field traceField)
         {
-
-            if (traceField.StartM != -2 && traceField.FinishM != -2)
+            int front = 1;
+            int marksPreviousState = 0;
+            int marksCurrentState = 1;
+            while (traceField.ArrayField[traceField.FinishN, traceField.FinishM] == 0 && (marksCurrentState - marksPreviousState) > 0)
             {
-                int d = traceField.ArrayField[traceField.StartN, traceField.StartM];
-                int marksPreviousState = 0;
-                int marksCurrentState = 1;
-                while (traceField.ArrayField[traceField.FinishN, traceField.FinishM] == 0 && (marksCurrentState - marksPreviousState) > 0)
+                marksPreviousState = marksCurrentState;
+                for (int i = 0; i < traceField.N; i++)
                 {
-                    marksPreviousState = marksCurrentState;
-                    for (int i = 0; i < traceField.N; i++)
+                    for (int j = 0; j < traceField.M; j++)
                     {
-                        for (int j = 0; j < traceField.M; j++)
+                        if (traceField.ArrayField[i, j] == front)
                         {
-                            if (traceField.ArrayField[i, j] == d)
+                            if (i != 0 && traceField.ArrayField[i - 1, j] == 0)
                             {
-                                if (i != 0 && traceField.ArrayField[i - 1, j] == 0)
-                                {
-                                    traceField.ArrayField[i - 1, j] = d + 1;
-                                    marksCurrentState++;
-                                }
-                                if (j != 0 && traceField.ArrayField[i, j - 1] == 0)
-                                {
-                                    traceField.ArrayField[i, j - 1] = d + 1;
-                                    marksCurrentState++;
-                                }
-                                if (i != traceField.N - 1 && traceField.ArrayField[i + 1, j] == 0)
-                                {
-                                    traceField.ArrayField[i + 1, j] = d + 1;
-                                    marksCurrentState++;
-                                }
-                                if (j != traceField.M - 1 && traceField.ArrayField[i, j + 1] == 0)
-                                {
-                                    traceField.ArrayField[i, j + 1] = d + 1;
-                                    marksCurrentState++;
-                                }
+                                traceField.ArrayField[i - 1, j] = front + 1;
+                                marksCurrentState++;
+                            }
+                            if (j != traceField.M - 1 && traceField.ArrayField[i, j + 1] == 0)
+                            {
+                                traceField.ArrayField[i, j + 1] = front + 1;
+                                marksCurrentState++;
+                            }
+                            if (i != traceField.N - 1 && traceField.ArrayField[i + 1, j] == 0)
+                            {
+                                traceField.ArrayField[i + 1, j] = front + 1;
+                                marksCurrentState++;
+                            }
+                            if (j != 0 && traceField.ArrayField[i, j - 1] == 0)
+                            {
+                                traceField.ArrayField[i, j - 1] = front + 1;
+                                marksCurrentState++;
                             }
                         }
                     }
-                    d++;
                 }
+                front++;
             }
 
         }
 
-        public static void LeadWay(Field traceField, int nCoordinate, int mCoordinate)
-        {
-            int d = traceField.ArrayField[nCoordinate, mCoordinate];
-            if (d > 2)
-            {
-                if ((nCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate - 1, mCoordinate]) == 1)
-                {
-                    var coordinates = new int[2] { nCoordinate - 1, mCoordinate };
-                    traceField.Way.Insert(0, coordinates);
-                    LeadWay(traceField, nCoordinate - 1, mCoordinate);
-                    return;
-                }
-                if ((mCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate, mCoordinate - 1]) == 1)
-                {
-                    var coordinates = new int[2] { nCoordinate, mCoordinate - 1 };
-                    traceField.Way.Insert(0, coordinates);
-                    LeadWay(traceField, nCoordinate, mCoordinate - 1);
-                    return;
-                }
-                if ((traceField.N - nCoordinate > 1) && (d - traceField.ArrayField[nCoordinate + 1, mCoordinate]) == 1)
-                {
-                    var coordinates = new int[2] { nCoordinate + 1, mCoordinate };
-                    traceField.Way.Insert(0, coordinates);
-                    LeadWay(traceField, nCoordinate + 1, mCoordinate);
-                    return;
-                }
-                if ((traceField.M - mCoordinate > 1) && (d - traceField.ArrayField[nCoordinate, mCoordinate + 1]) == 1)
-                {
-                    var coordinates = new int[2] { nCoordinate, mCoordinate + 1 };
-                    traceField.Way.Insert(0, coordinates);
-                    LeadWay(traceField, nCoordinate, mCoordinate + 1);
-                    return;
-                }
-            } else { return; }
-        }
-
-        public static void LeadWay2(Field traceField)
+        public static void LeadWay(Field traceField)
         {
             if (traceField.ArrayField[traceField.FinishN, traceField.FinishM] != 0)
             {
                 int nCoordinate = traceField.FinishN;
                 int mCoordinate = traceField.FinishM;
-                int d = traceField.ArrayField[nCoordinate, mCoordinate];
-                while (d > 2)
+                int weigth = traceField.ArrayField[nCoordinate, mCoordinate];
+                while (weigth > 2)
                 {
-                    if ((nCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate - 1, mCoordinate]) == 1)
+                    if ((nCoordinate - 1 >= 0) && (weigth - traceField.ArrayField[nCoordinate - 1, mCoordinate]) == 1)
                     {
                         var coordinates = new int[2] { nCoordinate - 1, mCoordinate };
                         traceField.Way.Insert(0, coordinates);
                         nCoordinate = nCoordinate - 1;
-                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        weigth = traceField.ArrayField[nCoordinate, mCoordinate];
                         continue;
                     }
-                    if ((traceField.M - mCoordinate > 1) && (d - traceField.ArrayField[nCoordinate, mCoordinate + 1]) == 1)
+                    if ((traceField.M - mCoordinate > 1) && (weigth - traceField.ArrayField[nCoordinate, mCoordinate + 1]) == 1)
                     {
                         var coordinates = new int[2] { nCoordinate, mCoordinate + 1 };
                         traceField.Way.Insert(0, coordinates);
                         mCoordinate = mCoordinate + 1;
-                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        weigth = traceField.ArrayField[nCoordinate, mCoordinate];
                         continue;
                     }
-                    if ((traceField.N - nCoordinate > 1) && (d - traceField.ArrayField[nCoordinate + 1, mCoordinate]) == 1)
+                    if ((traceField.N - nCoordinate > 1) && (weigth - traceField.ArrayField[nCoordinate + 1, mCoordinate]) == 1)
                     {
                         var coordinates = new int[2] { nCoordinate + 1, mCoordinate };
                         traceField.Way.Insert(0, coordinates);
                         nCoordinate = nCoordinate + 1;
-                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        weigth = traceField.ArrayField[nCoordinate, mCoordinate];
                         continue;
                     }
-                    if ((mCoordinate - 1 >= 0) && (d - traceField.ArrayField[nCoordinate, mCoordinate - 1]) == 1)
+                    if ((mCoordinate - 1 >= 0) && (weigth - traceField.ArrayField[nCoordinate, mCoordinate - 1]) == 1)
                     {
                         var coordinates = new int[2] { nCoordinate, mCoordinate - 1 };
                         traceField.Way.Insert(0, coordinates);
                         mCoordinate = mCoordinate - 1;
-                        d = traceField.ArrayField[nCoordinate, mCoordinate];
+                        weigth = traceField.ArrayField[nCoordinate, mCoordinate];
                         continue;
                     }
                 }
